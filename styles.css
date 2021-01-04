@@ -162,7 +162,7 @@ h2 {
   max-width: 430px;
   margin: calc(100vh / 100 * 14) auto 0; /* Need to amend in media queries */
   background: url(./images/bg-triangle.svg);
-  background-size: 70%;
+  background-size: 75%;
   background-repeat: no-repeat;
   background-position: center 50px; /* Need to amend px for responsiveness? */
 }
@@ -253,10 +253,12 @@ h2 {
 
 /* End rules */
 
-@media (min-width: 1000px) {
+@media (min-width: 700px) {
   main {
     margin: var(--s-48);
   }
+
+  /* Header - large screen */
 
   header {
     max-width: 43.75rem;
@@ -278,11 +280,62 @@ h2 {
     font-size: var(--s-64);
   }
 
+  /* End header large screen */
+
+  /* Game - large screen */
+
+  .game {
+    max-width: 476px;
+    margin-top: var(--s-40);
+    background-position: bottom;
+  }
+
+  .btn-img {
+    height: 86px;
+    width: 73px;
+    transform: translateY(-125%);
+  }
+
+  .rock .btn-img {
+    transform: translateY(-125%);
+  }
+
+  .circle-btn-outer {
+    height: 203px;
+    width: 198px;
+  }
+
+  .circle-btn-outer:before {
+    height: 194px;
+    width: 198px;
+  }
+
+  .circle-btn {
+    width: 152px;
+    height: 152px;
+  }
+
+  .circle-btn:before {
+    height: 144px;
+    width: 152px;
+  }
+
+  .bottom-btns {
+    width: 198px;
+    margin: 8% auto 0;
+  }
+
+  /* End game - large screen */
+
+  /* Rules - large screen */
+
   .rules {
     right: 0;
     left: unset;
     transform: unset;
   }
+
+  /* End rules - large screen */
 }
 
 .attribution {
