@@ -1,0 +1,294 @@
+:root {
+  /* Fonts and sizes */
+  --font-family: "Barlow Semi Condensed", sans-serif;
+  --fw-600: 600;
+  --fw-700: 700;
+  --s-10: 0.625rem;
+  --s-12: 0.75rem;
+  --s-15: 0.9375rem;
+  --s-16: 1rem;
+  --s-21: 1.3125rem;
+  --s-24: 1.5rem;
+  --s-32: 2rem;
+  --s-36: 2.25rem;
+  --s-40: 2.5rem;
+  --s-48: 3rem;
+  --s-56: 3.5rem;
+  --s-64: 4rem;
+
+  /* Colors */
+
+  --color-score: hsl(229, 64%, 46%);
+  --color-header-outline: hsl(217, 16%, 45%);
+  --color-dark-text: hsl(229, 25%, 31%);
+  --color-white: #ffffff;
+  --white-btn: linear-gradient(0deg, #f3f3f3 0%, #ffffff 100%);
+
+  --background-gradient: radial-gradient(
+    134.34% 134.34% at 50% 0%,
+    hsl(214, 47%, 23%) 0%,
+    hsl(237, 49%, 15%) 100%
+  );
+
+  --btn-inner: linear-gradient(
+    0deg,
+    hsl(0, 0%, 95%, 1) 0%,
+    hsl(0, 0%, 85%, 1) 98.34%
+  );
+  --btn-inner-shadow: hsl(230, 23%, 78%, 1);
+  --btn-outer-blue: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  --btn-outer-blue-shadow: hsl(230, 64%, 36%, 1);
+  --btn-outer-red: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  --btn-outer-red-shadow: hsl(347, 75%, 35%, 1);
+  --btn-outer-yellow: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  --btn-outer-yellow-shadow: hsl(28, 77%, 44%, 1);
+}
+
+/* Default styles */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-white);
+  background: var(--background-gradient);
+}
+
+main {
+  min-height: 101vh;
+  position: relative;
+  margin: var(--s-32) 8.53%;
+}
+
+/* Buttons */
+
+.top-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* - Game buttons */
+
+/* - Transparent buttons */
+
+.btn-clear {
+  cursor: pointer;
+  color: var(--color-white);
+  background-color: transparent;
+  text-transform: uppercase;
+  padding: var(--s-10) var(--s-36);
+  border: 1px solid var(--color-white);
+  border-radius: 8px;
+  letter-spacing: 2.5px;
+}
+
+.btn-clear:hover {
+  color: var(--color-dark-text);
+  background: var(--white-btn);
+}
+
+/* End buttons */
+/* End default styles */
+
+/* Header - logo and score */
+
+header {
+  max-width: 25rem;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid var(--color-header-outline);
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 5.1875rem;
+  margin: var(--s-24);
+}
+
+.score {
+  background: var(--white-btn);
+  border-radius: 4px;
+  text-align: center;
+  margin: var(--s-12);
+  padding: var(--s-10) var(--s-24);
+}
+
+.score p {
+  color: var(--color-score);
+  font-size: var(--s-10);
+  font-weight: var(--fw-600);
+  text-transform: uppercase;
+  letter-spacing: 1.5625px;
+}
+
+h2 {
+  color: var(--color-dark-text);
+  font-size: var(--s-40);
+}
+
+/* End header */
+
+/* Game section */
+
+.game {
+  max-width: 430px;
+  margin: calc(100vh / 100 * 14) auto 0; /* Need to amend in media queries */
+  background: url(./images/bg-triangle.svg);
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center 50px; /* Need to amend px for responsiveness? */
+}
+
+/* Game buttons */
+
+.btn-img {
+  transform: translateY(-120%);
+}
+
+.rock .btn-img {
+  transform: translateY(-140%);
+}
+
+.circle-btn-outer:hover {
+  opacity: 0.7;
+}
+
+.circle-btn-outer {
+  height: 132.66px;
+  width: 129.37px;
+  position: relative;
+  background-color: var(--btn-outer-blue-shadow);
+  border-radius: 100px;
+}
+
+.circle-btn-outer:before {
+  content: "";
+  display: block;
+  height: 126.78px;
+  width: 129.37px;
+  background: var(--btn-outer-blue);
+  border-radius: 100px;
+  transform: translateY(-2%);
+}
+
+.circle-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -51%);
+  width: 99.31px;
+  height: 99.33px;
+  background-color: var(--btn-inner-shadow);
+  border-radius: 100px;
+}
+
+.circle-btn:before {
+  content: "";
+  display: block;
+  height: 94.1px;
+  width: 99.31px;
+  background: var(--btn-inner);
+  border-radius: 100px;
+  transform: translateY(6%);
+}
+
+.scissors-outer {
+  background: var(--btn-outer-yellow-shadow);
+}
+.scissors-outer:before {
+  background: var(--btn-outer-yellow);
+}
+.rock-outer {
+  background: var(--btn-outer-red-shadow);
+}
+.rock-outer:before {
+  background: var(--btn-outer-red);
+}
+
+.bottom-btns {
+  width: 129.36px;
+  margin: 8% auto 0;
+}
+
+/* End game buttons */
+
+/* End game section */
+
+/* Rules - button and popup */
+
+.rules {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* End rules */
+
+@media (min-width: 1000px) {
+  main {
+    margin: var(--s-48);
+  }
+
+  header {
+    max-width: 43.75rem;
+  }
+
+  .logo {
+    width: 10rem;
+  }
+
+  .score {
+    padding: var(--s-16) var(--s-48);
+  }
+
+  .score p {
+    font-size: var(--s-16);
+  }
+
+  h2 {
+    font-size: var(--s-64);
+  }
+
+  .rules {
+    right: 0;
+    left: unset;
+    transform: unset;
+  }
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
