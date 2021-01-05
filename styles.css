@@ -42,6 +42,9 @@
   --btn-outer-red-shadow: hsl(347, 75%, 35%, 1);
   --btn-outer-yellow: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
   --btn-outer-yellow-shadow: hsl(28, 77%, 44%, 1);
+
+  --shadow: 0px 3px 3px hsl(0, 0%, 0%, 0.2);
+  --text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.196706);
 }
 
 /* Default styles */
@@ -81,10 +84,15 @@ main {
   margin: var(--s-32) 8.53%;
 }
 
+.hidden {
+  display: none;
+}
+
 /* Buttons */
 
 .top-btns {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -130,6 +138,7 @@ header {
 
 .logo {
   width: 5.1875rem;
+  height: var(--s-48);
   margin: var(--s-24);
 }
 
@@ -152,6 +161,7 @@ header {
 h2 {
   color: var(--color-dark-text);
   font-size: var(--s-40);
+  line-height: 1;
 }
 
 /* End header */
@@ -181,6 +191,10 @@ h2 {
   opacity: 0.7;
 }
 
+.circle-btn-outer:disabled {
+  opacity: unset;
+}
+
 .circle-btn-outer {
   height: 132.66px;
   width: 129.37px;
@@ -203,7 +217,7 @@ h2 {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -51%);
+  transform: translate(-50%, -55%);
   width: 99.31px;
   height: 99.33px;
   background-color: var(--btn-inner-shadow);
@@ -235,10 +249,61 @@ h2 {
 
 .bottom-btns {
   width: 129.36px;
-  margin: 8% auto 0;
+  margin: 4% auto 0;
 }
 
 /* End game buttons */
+
+/* Second screen */
+
+.opaque-circle {
+  height: 110px;
+  width: 110px;
+  background-color: hsl(0, 0%, 0%, 0.1);
+  border-radius: 100px;
+  margin: 0.7rem;
+}
+
+h3 {
+  font-size: var(--s-15);
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 1.875px;
+  margin-top: 2rem;
+  flex-basis: 100%;
+}
+
+.house {
+  width: 160px;
+  position: relative;
+  top: 115px;
+  right: 10%;
+}
+
+.result {
+  text-align: center;
+  transform: translateY(calc(100vh / 20 * 2));
+}
+
+h1 {
+  font-size: var(--s-56);
+  font-weight: var(--fw-700);
+  text-transform: uppercase;
+  text-shadow: var(--text-shadow);
+}
+
+.play-again {
+  background: var(--white-btn);
+  color: var(--color-dark-text);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: var(--s-15) var(--s-64);
+  margin-top: var(--s-16);
+}
+
+/* End second screen */
 
 /* End game section */
 
@@ -246,14 +311,20 @@ h2 {
 
 .rules {
   position: absolute;
-  bottom: 100px;
+  bottom: 90px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 /* End rules */
 
-@media (min-width: 700px) {
+@media (min-width: 600px) {
+  .house {
+    position: absolute;
+    top: 195px;
+    /* amend when resizing button */
+  }
+
   main {
     margin: var(--s-48);
   }
@@ -287,7 +358,7 @@ h2 {
   .game {
     max-width: 476px;
     margin-top: var(--s-40);
-    background-position: bottom;
+    background-position: center 80px;
   }
 
   .btn-img {
@@ -325,6 +396,13 @@ h2 {
     margin: 8% auto 0;
   }
 
+  /* Game - second screen - large */
+
+  .opaque-circle {
+    height: 224.63px;
+    width: 224.63px;
+    border-radius: 150px;
+  }
   /* End game - large screen */
 
   /* Rules - large screen */
