@@ -7,6 +7,14 @@ const widthQuery = window.matchMedia("(min-width: 600px)");
 let gameChoice = "";
 let userChoice = "";
 
+let score = sessionStorage.getItem("score");
+
+if (score == null) {
+    $("h2").innerHTML = 0;
+} else {
+    $("h2").innerHTML = score;
+}
+
 $$(".circle-btn-outer").forEach((button) => {
     button.addEventListener("click", () => {
         userChoice = button.getAttribute("value");
@@ -77,13 +85,37 @@ function housePicks() {
 
 function whoWins() {
 
+    let newScore = 0;
+
     $(".result").classList.remove("hidden");
    
     if (userChoice == gameChoice) {
         $("h1").innerHTML = "Draw";
+        newScore = parseInt(score, 10);
     } else if ((userChoice == "paper" && gameChoice == "rock") || (userChoice == "scissors" && gameChoice == "paper") || (userChoice == "rock" && gameChoice == "scissors")) {
         $("h1").innerHTML = "You win";
-    } 
+        
+        if (score == null) {
+            sessionStorage.setItem("score", "1");
+            newScore = 1;
+        } else {
+            newScore = parseInt(sessionStorage.getItem("score"), 10);
+            newScore++; 
+        } 
+    } else {
+        if (score == null) {
+            sessionStorage.setItem("score", "-1");
+            newScore = -1;
+        } else {
+            newScore = parseInt(sessionStorage.getItem("score"), 10);
+            newScore--;
+        }
+    }
+    
+    sessionStorage.setItem("score", JSON.stringify(newScore));
+            
+    $("h2").innerHTML = newScore;
+
 
     $(".play-again").addEventListener("click", () => {
         location.reload();
