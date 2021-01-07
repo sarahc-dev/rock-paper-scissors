@@ -1,11 +1,10 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
-
-const options = ["rock", "paper", "scissors"];
 const widthQuery = window.matchMedia("(min-width: 600px)");
 
-let gameChoice = "";
+const options = ["rock", "paper", "scissors"];
 let userChoice = "";
+let gameChoice = "";
 
 let score = sessionStorage.getItem("score");
 
@@ -24,10 +23,13 @@ $$(".circle-btn-outer").forEach((button) => {
 
 function newGame() {
 
-   $(".game").style.background = "none";
-   $(".bottom-btns").classList.add("hidden");
-   $(".scissors-outer").classList.add("hidden");
-   $(".opaque-circle").classList.remove("hidden");
+    $(".game").style.background = "none";
+    $(".bottom-btns").classList.add("hidden");
+    $(".scissors-outer").classList.add("hidden");
+    $(".opaque-circle").classList.remove("hidden");
+
+    $(".btn-container").style.position = "relative";
+    $(".btn-container").style.left = "2rem";
 
     let userBtn = userChoice + "-outer";
     let newImg = "./images/icon-" + userChoice + ".svg";
@@ -45,13 +47,23 @@ function newGame() {
 
    if (widthQuery.matches === false) {
        $(".circle-btn-outer").appendChild(youPicked);
-       $(".circle-btn-outer").disabled = true;
-       $(".opaque-circle").appendChild(housePicked);
+       $("[value='paper']").disabled = true;
+    $("[value='scissors']").disabled = true;
+       $(".btn-container").appendChild(housePicked);
    } else {
+       if (window.screen.width > "900") {  // large buttons
+        $(".top-btns").classList.add("lrg");
+       } else {                            // same size buttons
+           $(".game").style.marginTop = "5rem";
+       }
+
        let parent = $(".circle-btn-outer").parentNode;
        parent.insertBefore(youPicked, $(".circle-btn-outer"));
-    $(".circle-btn-outer").disabled = true;
-    $("h3").append(housePicked);
+
+
+    $("[value='paper']").disabled = true;
+    $("[value='scissors']").disabled = true;
+    $(".btn-container").append(housePicked);
    }
 
    setTimeout(() => {
@@ -121,8 +133,18 @@ function whoWins() {
         location.reload();
     })
 }
+
+$(".rules").addEventListener("click", () => {
+    $(".rules-dark").classList.remove("hidden");
+
     
 
+    $("button").addEventListener("click", () => {
+        $(".rules-dark").classList.add("hidden");
+       
+    })
+})
+    
     
 
 
