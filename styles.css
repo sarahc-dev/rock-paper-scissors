@@ -301,7 +301,7 @@ h1 {
 
 .rules {
   position: absolute;
-  bottom: 90px;
+  bottom: 18%;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -440,9 +440,6 @@ h4 {
   h3 {
     margin-top: -1rem;
     font-size: var(--s-24);
-  }
-
-  .house {
   }
 
   /* Game - second screen - large */
