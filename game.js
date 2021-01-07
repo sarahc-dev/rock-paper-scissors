@@ -8,7 +8,7 @@ let gameChoice = "";
 
 let score = sessionStorage.getItem("score");
 
-if (score == null) {
+if (score == null || score == "NaN") {
     $("h2").innerHTML = 0;
 } else {
     $("h2").innerHTML = score;
